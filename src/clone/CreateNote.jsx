@@ -9,16 +9,13 @@ export const CreateNote = (props) => {
         content: '',
     })
     const inputEvent = (event) => {
-        //event.preventDefault()
         const { name, value } = event.target;
-        //event.preventDefault()
         setNote((prevVal) => {
             return {
                 ...prevVal,
                 [name]: value,
             }
         })
-        //event.preventDefault()
         console.log(note)
     }
     const addEvent = (event) => {
