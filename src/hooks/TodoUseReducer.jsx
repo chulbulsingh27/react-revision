@@ -1,6 +1,9 @@
 import React, { useReducer } from 'react'
+import { HeaderNew } from './HeaderNew';
 import { TodoUseReducer1 } from './TodoUseReducer1';
+import TodosContext from '../context/TodoContext';
 const initialState = []
+
  export const TODO_ACTIONS = {
     ADD_TASK: 'add_task',
     DELETE_TASK: 'delete_task',
@@ -27,17 +30,24 @@ function init(initialState) {
 export const TodoUseReducer = () => {
 
     const [todos, dispatch] = useReducer(reducer, initialState, init);
+    const data = {
+        todos,
+        dispatch
+    }
 
     return (
-        <div className='flex items-center justify-center '>
-            <p className=' m-10 text-xl font-bold'>Todo List : {todos.length} </p>
+        
+        <TodosContext.Provider value={data} className='flex items-center justify-center '>
+            {/* <p className=' m-10 text-xl font-bold'>Todo List : {todos.length} </p> */}
+            <HeaderNew />
             <div className='flex flex-col items-center justify-center py-10'>
                 <p className='m-4'>Add new task : </p>
                 <input type='text' className='border-2 border-black ' onBlur={(event) => dispatch({ type: TODO_ACTIONS.ADD_TASK, payload: event.target.value })} />
                 <button className='border-2 border-black bg-blue-300 rounded-md m-4'onClick={()=>dispatch({type:TODO_ACTIONS.RESET_TODOS,payload:initialState})}>reset</button>
                 <hr />
-                <TodoUseReducer1 todos={todos} dispatch={dispatch}/>
+                <TodoUseReducer1  />
             </div>
-        </div>
+        </TodosContext.Provider>
+        
     )
 }

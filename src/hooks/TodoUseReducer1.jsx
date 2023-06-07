@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import TodosContext from '../context/TodoContext'
+
 import { TODO_ACTIONS } from './TodoUseReducer'
 
-export const TodoUseReducer1 = ({todos,dispatch}) => {
+export const TodoUseReducer1 = () => {
+    const {todos,dispatch} = useContext(TodosContext);
+    console.log(todos)
     return (
         <div>
             {todos.map(todo => (<li key={todo.id}>{todo.name} <span>
