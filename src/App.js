@@ -22,6 +22,7 @@ import { ThemeToggle } from './hooks/ThemeToggle';
 import { EffectHook } from './hooks/EffectHook';
 import { TodoUseReducer } from './hooks/TodoUseReducer';
 import { UserDashBoard } from './hooks/useContexthook/UserDashBoard';
+import { UsersHooks } from './hooks/usememo/UsersHooks';
 function App() {
 
   const [addItem, setAddItem] = useState([]);
@@ -52,7 +53,8 @@ function App() {
         {/* <UseArray /> */}
         {/* <ThemeToggle /> */}
         {/* <EffectHook /> */}
-        <TodoUseReducer />
+        {/* <TodoUseReducer /> */}
+        <UsersHooks />
         {/* <UserDashBoard /> */}
         {/* <Routes>
           <Route path="/" element={<Home />} />
